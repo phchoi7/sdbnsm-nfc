@@ -45,7 +45,11 @@ import createCache from "@emotion/cache";
 import routes from "routes";
 
 // Argon Dashboard 2 MUI contexts
-import { useArgonController, setMiniSidenav, setOpenConfigurator } from "context";
+import {
+  useArgonController,
+  setMiniSidenav,
+  setOpenConfigurator,
+} from "context";
 
 // Images
 import brand from "assets/images/logo-ct.png";
@@ -57,8 +61,15 @@ import "assets/css/nucleo-svg.css";
 
 export default function App() {
   const [controller, dispatch] = useArgonController();
-  const { miniSidenav, direction, layout, openConfigurator, sidenavColor, darkSidenav, darkMode } =
-    controller;
+  const {
+    miniSidenav,
+    direction,
+    layout,
+    openConfigurator,
+    sidenavColor,
+    darkSidenav,
+    darkMode,
+  } = controller;
   const [onMouseEnter, setOnMouseEnter] = useState(false);
   const [rtlCache, setRtlCache] = useState(null);
   const { pathname } = useLocation();
@@ -90,7 +101,8 @@ export default function App() {
   };
 
   // Change the openConfigurator state
-  const handleConfiguratorOpen = () => setOpenConfigurator(dispatch, !openConfigurator);
+  const handleConfiguratorOpen = () =>
+    setOpenConfigurator(dispatch, !openConfigurator);
 
   // Setting the dir attribute for the body element
   useEffect(() => {
@@ -110,7 +122,14 @@ export default function App() {
       }
 
       if (route.route) {
-        return <Route exact path={route.route} element={route.component} key={route.key} />;
+        return (
+          <Route
+            exact
+            path={route.route}
+            element={route.component}
+            key={route.key}
+          />
+        );
       }
 
       return null;

@@ -49,10 +49,67 @@ import team1 from "assets/images/team-1.jpg";
 import team2 from "assets/images/team-2.jpg";
 import team3 from "assets/images/team-3.jpg";
 import team4 from "assets/images/team-4.jpg";
+import productData from "./data/data.json";
+import { useParams } from "react-router-dom";
 const bgImage =
   "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/profile-layout-header.jpg";
 
 function Overview() {
+  const { id } = useParams();
+  const product = productData.find((product) => product.id === id);
+
+  if (!product) {
+    return (
+      <DashboardLayout
+        sx={{
+          backgroundImage: ({
+            functions: { rgba, linearGradient },
+            palette: { gradients },
+          }) =>
+            `${linearGradient(
+              rgba(gradients.info.main, 0.6),
+              rgba(gradients.info.state, 0.6)
+            )}, url(${bgImage})`,
+          backgroundPositionY: "50%",
+        }}
+      >
+        <Header
+          product={{
+            id: "error",
+            name: "Product Not Found!",
+            description: "Product Not Found!",
+            image: "/assets/image/logo-ct-dark.png",
+          }}
+        />
+        <ArgonBox mt={5} mb={3}>
+          <Grid container spacing={3}></Grid>
+        </ArgonBox>
+        <ArgonBox mb={3}>
+          <Card>
+            <ArgonBox pt={2} px={2}>
+              <ArgonBox mb={0.5}>
+                <ArgonTypography variant="h6" fontWeight="medium">
+                  Details
+                </ArgonTypography>
+              </ArgonBox>
+              <ArgonBox mb={1}>
+                <ArgonTypography
+                  variant="button"
+                  fontWeight="regular"
+                  color="text"
+                >
+                  Product Not Found!
+                </ArgonTypography>
+              </ArgonBox>
+            </ArgonBox>
+          </Card>
+        </ArgonBox>
+
+        <Footer />
+      </DashboardLayout>
+    );
+  }
+
   return (
     <DashboardLayout
       sx={{
@@ -67,7 +124,7 @@ function Overview() {
         backgroundPositionY: "50%",
       }}
     >
-      <Header />
+      <Header product={product} />
       <ArgonBox mt={5} mb={3}>
         <Grid container spacing={3}>
           {/* <Grid item xs={12} md={6} xl={4}>
@@ -113,7 +170,7 @@ function Overview() {
           <ArgonBox pt={2} px={2}>
             <ArgonBox mb={0.5}>
               <ArgonTypography variant="h6" fontWeight="medium">
-                Projects
+                Details
               </ArgonTypography>
             </ArgonBox>
             <ArgonBox mb={1}>
@@ -122,7 +179,7 @@ function Overview() {
                 fontWeight="regular"
                 color="text"
               >
-                Architects design houses
+                {product.description}
               </ArgonTypography>
             </ArgonBox>
           </ArgonBox>

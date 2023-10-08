@@ -62,7 +62,8 @@ import logoSpotify from "assets/images/small-logos/logo-spotify.svg";
 function DashboardNavbar({ absolute, light, isMini }) {
   const [navbarType, setNavbarType] = useState();
   const [controller, dispatch] = useArgonController();
-  const { miniSidenav, transparentNavbar, fixedNavbar, openConfigurator } = controller;
+  const { miniSidenav, transparentNavbar, fixedNavbar, openConfigurator } =
+    controller;
   const [openMenu, setOpenMenu] = useState(false);
   const route = useLocation().pathname.split("/").slice(1);
 
@@ -76,7 +77,10 @@ function DashboardNavbar({ absolute, light, isMini }) {
 
     // A function that sets the transparent state of the navbar.
     function handleTransparentNavbar() {
-      setTransparentNavbar(dispatch, (fixedNavbar && window.scrollY === 0) || !fixedNavbar);
+      setTransparentNavbar(
+        dispatch,
+        (fixedNavbar && window.scrollY === 0) || !fixedNavbar
+      );
     }
 
     /** 
@@ -93,7 +97,8 @@ function DashboardNavbar({ absolute, light, isMini }) {
   }, [dispatch, fixedNavbar]);
 
   const handleMiniSidenav = () => setMiniSidenav(dispatch, !miniSidenav);
-  const handleConfiguratorOpen = () => setOpenConfigurator(dispatch, !openConfigurator);
+  const handleConfiguratorOpen = () =>
+    setOpenConfigurator(dispatch, !openConfigurator);
   const handleOpenMenu = (event) => setOpenMenu(event.currentTarget);
   const handleCloseMenu = () => setOpenMenu(false);
 
@@ -125,7 +130,10 @@ function DashboardNavbar({ absolute, light, isMini }) {
       <NotificationItem
         color="secondary"
         image={
-          <Icon fontSize="small" sx={{ color: ({ palette: { white } }) => white.main }}>
+          <Icon
+            fontSize="small"
+            sx={{ color: ({ palette: { white } }) => white.main }}
+          >
             payment
           </Icon>
         }
@@ -154,13 +162,24 @@ function DashboardNavbar({ absolute, light, isMini }) {
             route={route}
             light={transparentNavbar ? light : false}
           />
-          <Icon fontSize="medium" sx={navbarDesktopMenu} onClick={handleMiniSidenav}>
+          <Icon
+            fontSize="medium"
+            sx={navbarDesktopMenu}
+            onClick={handleMiniSidenav}
+          >
             {miniSidenav ? "menu_open" : "menu"}
           </Icon>
         </ArgonBox>
         {isMini ? null : (
           <ArgonBox sx={(theme) => navbarRow(theme, { isMini })}>
             <ArgonBox pr={1}>
+              <ArgonTypography
+                variant="h3"
+                fontWeight="medium"
+                style={{ color: "white", marginBottom: "12px" }}
+              >
+                伍少梅中學 Database
+              </ArgonTypography>
               <ArgonInput
                 placeholder="Type here..."
                 startAdornment={
@@ -170,7 +189,7 @@ function DashboardNavbar({ absolute, light, isMini }) {
                 }
               />
             </ArgonBox>
-            <ArgonBox color={light ? "white" : "inherit"}>
+            {/* <ArgonBox color={light ? "white" : "inherit"}>
               <Link to="/authentication/sign-in/basic">
                 <IconButton sx={navbarIconButton} size="small">
                   <Icon
@@ -217,7 +236,7 @@ function DashboardNavbar({ absolute, light, isMini }) {
                 <Icon>notifications</Icon>
               </IconButton>
               {renderMenu()}
-            </ArgonBox>
+            </ArgonBox> */}
           </ArgonBox>
         )}
       </Toolbar>

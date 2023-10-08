@@ -3,12 +3,12 @@
         "id": "1",
         "name": "Product A",
         "description": "Description for Product A",
-        "image": "/assets/images/apple.jpg"
+        "image": "/assets/image/apple.jpg"
     },
     {
         "id": "2",
         "name": "Product B",
         "description": "Description for Product B",
-        "image": "/assets/images/orange.jpg"
+        "image": "/assets/image/orange.jpg"
     }
 ]

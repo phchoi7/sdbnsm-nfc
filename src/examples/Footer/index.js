@@ -72,26 +72,7 @@ function Footer({ company, links }) {
             &nbsp;{name}&nbsp;
           </ArgonTypography>
         </Link>
-        for a better web.
-      </ArgonBox>
-      <ArgonBox
-        component="ul"
-        sx={({ breakpoints }) => ({
-          display: "flex",
-          flexWrap: "wrap",
-          alignItems: "center",
-          justifyContent: "center",
-          listStyle: "none",
-          mt: 3,
-          mb: 0,
-          p: 0,
-
-          [breakpoints.up("lg")]: {
-            mt: 0,
-          },
-        })}
-      >
-        {renderLinks()}
+        for a web product.
       </ArgonBox>
     </ArgonBox>
   );
@@ -99,12 +80,12 @@ function Footer({ company, links }) {
 
 // Setting default values for the props of Footer
 Footer.defaultProps = {
-  company: { href: "https://www.creative-tim.com/", name: "Creative Tim" },
+  company: { href: "/", name: "Christian Choi" },
   links: [
-    { href: "https://www.creative-tim.com/", name: "Creative Tim" },
-    { href: "https://www.creative-tim.com/presentation", name: "About Us" },
-    { href: "https://www.creative-tim.com/blog", name: "Blog" },
-    { href: "https://www.creative-tim.com/license", name: "License" },
+    { href: "/", name: "Christian Choi" },
+    { href: "/", name: "About Us" },
+    { href: "/", name: "Blog" },
+    { href: "/", name: "License" },
   ],
 };
 

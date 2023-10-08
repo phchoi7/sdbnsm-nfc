@@ -42,11 +42,10 @@ import { useParams } from "react-router-dom";
 import CardMedia from "@mui/material/CardMedia";
 import Tooltip from "@mui/material/Tooltip";
 
-function Header() {
+function Header({ product }) {
   const [tabsOrientation, setTabsOrientation] = useState("horizontal");
   const [tabValue, setTabValue] = useState(0);
   const { id } = useParams();
-  const product = productData.find((product) => product.id === id);
 
   useEffect(() => {
     // A function that sets the orientation state of the tabs.

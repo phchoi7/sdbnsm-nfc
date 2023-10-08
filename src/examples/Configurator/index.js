@@ -48,9 +48,22 @@ import {
 
 function Configurator() {
   const [controller, dispatch] = useArgonController();
-  const { openConfigurator, darkSidenav, miniSidenav, fixedNavbar, sidenavColor, darkMode } =
-    controller;
-  const sidenavColors = ["primary", "dark", "info", "success", "warning", "error"];
+  const {
+    openConfigurator,
+    darkSidenav,
+    miniSidenav,
+    fixedNavbar,
+    sidenavColor,
+    darkMode,
+  } = controller;
+  const sidenavColors = [
+    "primary",
+    "dark",
+    "info",
+    "success",
+    "warning",
+    "error",
+  ];
 
   const handleCloseConfigurator = () => setOpenConfigurator(dispatch, false);
   const handledarkSidenav = () => setDarkSidenav(dispatch, true);
@@ -80,7 +93,10 @@ function Configurator() {
         </ArgonBox>
 
         <Icon
-          sx={({ typography: { size, fontWeightBold }, palette: { dark, white } }) => ({
+          sx={({
+            typography: { size, fontWeightBold },
+            palette: { dark, white },
+          }) => ({
             fontSize: `${size.md} !important`,
             fontWeight: `${fontWeightBold} !important`,
             color: darkMode ? white.main : dark.main,
@@ -105,7 +121,11 @@ function Configurator() {
             {sidenavColors.map((color) => (
               <IconButton
                 key={color}
-                sx={({ borders: { borderWidth }, palette: { white, dark }, transitions }) => ({
+                sx={({
+                  borders: { borderWidth },
+                  palette: { white, dark },
+                  transitions,
+                }) => ({
                   width: "24px",
                   height: "24px",
                   padding: 0,
@@ -115,8 +135,14 @@ function Configurator() {
                     easing: transitions.easing.sharp,
                     duration: transitions.duration.shorter,
                   }),
-                  backgroundImage: ({ functions: { linearGradient }, palette: { gradients } }) =>
-                    linearGradient(gradients[color].main, gradients[color].state),
+                  backgroundImage: ({
+                    functions: { linearGradient },
+                    palette: { gradients },
+                  }) =>
+                    linearGradient(
+                      gradients[color].main,
+                      gradients[color].state
+                    ),
 
                   "&:not(:last-child)": {
                     mr: 1,
@@ -165,7 +191,12 @@ function Configurator() {
             </ArgonButton>
           </ArgonBox>
         </ArgonBox>
-        <ArgonBox display="flex" justifyContent="space-between" mt={3} lineHeight={1}>
+        <ArgonBox
+          display="flex"
+          justifyContent="space-between"
+          mt={3}
+          lineHeight={1}
+        >
           <ArgonTypography variant="h6">Navbar Fixed</ArgonTypography>
 
           <Switch checked={fixedNavbar} onChange={handleFixedNavbar} />
@@ -185,85 +216,6 @@ function Configurator() {
           <ArgonTypography variant="h6">Light / Dark</ArgonTypography>
 
           <Switch checked={darkMode} onChange={handleDarkMode} />
-        </ArgonBox>
-
-        <ArgonBox mt={5} mb={2}>
-          <ArgonBox mb={2}>
-            <ArgonButton
-              component={Link}
-              href="https://www.creative-tim.com/product/argon-dashboard-pro-material-ui"
-              target="_blank"
-              rel="noreferrer"
-              color="info"
-              fullWidth
-            >
-              Buy Now
-            </ArgonButton>
-          </ArgonBox>
-          <ArgonBox mb={2}>
-            <ArgonButton
-              component={Link}
-              href="https://www.creative-tim.com/product/argon-dashboard-material-ui"
-              target="_blank"
-              rel="noreferrer"
-              color="dark"
-              fullWidth
-            >
-              Free Download
-            </ArgonButton>
-          </ArgonBox>
-          <ArgonButton
-            component={Link}
-            href="https://www.creative-tim.com/learning-lab/react/quick-start/argon-dashboard/"
-            target="_blank"
-            rel="noreferrer"
-            color={darkMode ? "white" : "dark"}
-            variant="outlined"
-            fullWidth
-          >
-            View Documentation
-          </ArgonButton>
-        </ArgonBox>
-        <ArgonBox display="flex" justifyContent="center">
-          <GitHubButton
-            href="https://github.com/creativetimofficial/argon-dashboard-material-ui"
-            data-icon="octicon-star"
-            data-size="large"
-            data-show-count="true"
-            aria-label="Star creativetimofficial/argon-dashboard-material-uit on GitHub"
-          >
-            Star
-          </GitHubButton>
-        </ArgonBox>
-        <ArgonBox mt={3} textAlign="center">
-          <ArgonBox mb={0.5}>
-            <ArgonTypography variant="h6">Thank you for sharing!</ArgonTypography>
-          </ArgonBox>
-
-          <ArgonBox display="flex" justifyContent="center">
-            <ArgonBox mr={1.5}>
-              <ArgonButton
-                component={Link}
-                href="//twitter.com/intent/tweet?text=Check%20Argon%20Dashboard%202%20PRO%20MUI%20made%20by%20%40CreativeTim%20%23webdesign%20%23dashboard%20%23react%20%mui&url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fargon-dashboard-material-ui"
-                target="_blank"
-                rel="noreferrer"
-                color="dark"
-              >
-                <TwitterIcon />
-                &nbsp; Tweet
-              </ArgonButton>
-            </ArgonBox>
-            <ArgonButton
-              component={Link}
-              href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/argon-dashboard-material-ui"
-              target="_blank"
-              rel="noreferrer"
-              color="dark"
-            >
-              <FacebookIcon />
-              &nbsp; Share
-            </ArgonButton>
-          </ArgonBox>
         </ArgonBox>
       </ArgonBox>
     </ConfiguratorRoot>
