@@ -27,20 +27,33 @@ import ArgonTypography from "components/ArgonTypography";
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import PageLayout from "examples/LayoutContainers/PageLayout";
 
-function IllustrationLayout({ color, header, title, description, button, illustration, children }) {
+function IllustrationLayout({
+  color,
+  header,
+  title,
+  description,
+  button,
+  illustration,
+  children,
+}) {
   return (
     <PageLayout background="white">
-      <DefaultNavbar
+      {/* <DefaultNavbar
         action={{
           type: "external",
           route: "https://creative-tim.com/product/argon-dashboard-material-ui",
           label: "Free Download",
           ...button,
         }}
-      />
+      /> */}
       <Grid container>
         <Grid item xs={11} sm={8} md={6} lg={4} xl={3} sx={{ mx: "auto" }}>
-          <ArgonBox display="flex" flexDirection="column" justifyContent="center" height="100vh">
+          <ArgonBox
+            display="flex"
+            flexDirection="column"
+            justifyContent="center"
+            height="100vh"
+          >
             <ArgonBox pt={3} px={3}>
               {!header ? (
                 <>
@@ -49,7 +62,11 @@ function IllustrationLayout({ color, header, title, description, button, illustr
                       {title}
                     </ArgonTypography>
                   </ArgonBox>
-                  <ArgonTypography variant="body2" fontWeight="regular" color="text">
+                  <ArgonTypography
+                    variant="body2"
+                    fontWeight="regular"
+                    color="text"
+                  >
                     {description}
                   </ArgonTypography>
                 </>
@@ -129,7 +146,15 @@ IllustrationLayout.defaultProps = {
 
 // Typechecking props for the IllustrationLayout
 IllustrationLayout.propTypes = {
-  color: PropTypes.oneOf(["primary", "secondary", "info", "success", "warning", "error", "dark"]),
+  color: PropTypes.oneOf([
+    "primary",
+    "secondary",
+    "info",
+    "success",
+    "warning",
+    "error",
+    "dark",
+  ]),
   header: PropTypes.node,
   title: PropTypes.string,
   description: PropTypes.string,

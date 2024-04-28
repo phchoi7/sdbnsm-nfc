@@ -1,18 +1,3 @@
-/**
-=========================================================
-* Argon Dashboard 2 MUI - v3.0.1
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-dashboard-material-ui
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
 // react-router-dom components
 import { Link } from "react-router-dom";
 
@@ -92,7 +77,11 @@ function Cover() {
               </ArgonButton>
             </ArgonBox>
             <ArgonBox mt={2}>
-              <ArgonTypography variant="button" color="text" fontWeight="regular">
+              <ArgonTypography
+                variant="button"
+                color="text"
+                fontWeight="regular"
+              >
                 Already have an account?&nbsp;
                 <ArgonTypography
                   component={Link}

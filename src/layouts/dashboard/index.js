@@ -34,6 +34,7 @@ const ScrollableContainer = styled(ArgonBox)(({ theme }) => ({
   display: "flex",
   flexWrap: "nowrap",
   overflowX: "auto",
+  "-webkit-overflow-scrolling": "touch", // Add momentum-based scrolling for iOS devices
   // Remove the margin-right on the last item to prevent extra spacing
   "& > *:not(:last-child)": {
     marginRight: theme.spacing(2),
@@ -45,6 +46,7 @@ const ScrollableContainer = styled(ArgonBox)(({ theme }) => ({
   },
   "-ms-overflow-style": "none",
   "scrollbar-width": "none",
+  "touch-action": "pan-x", // Enable horizontal panning
 }));
 
 function Default() {
@@ -85,9 +87,11 @@ function Default() {
                 <Card
                   key={item.id}
                   sx={{
+                    width: "80vw", // Use viewport width units for responsive width on mobile
+                    flex: "0 0 auto", // This ensures the flex items don't shrink and are laid out according to their width
+                    marginRight: "16px",
                     minWidth: "200px",
                     maxWidth: "200px", // Set a maximum width for the card
-                    marginRight: "16px",
                   }}
                 >
                   <ArgonBox pt={2} px={2}>
