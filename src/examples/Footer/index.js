@@ -60,13 +60,7 @@ function Footer({ company, links }) {
         fontSize={size.sm}
         px={1.5}
       >
-        &copy; {new Date().getFullYear()}, made with
-        <ArgonBox fontSize={size.md} color="text" mb={-0.5} mx={0.25}>
-          <Icon color="inherit" fontSize="inherit">
-            favorite
-          </Icon>
-        </ArgonBox>
-        by
+        &copy; {new Date().getFullYear()}, made by
         <Link href={href} target="_blank">
           <ArgonTypography variant="button" fontWeight="medium">
             &nbsp;{name}&nbsp;
@@ -80,9 +74,9 @@ function Footer({ company, links }) {
 
 // Setting default values for the props of Footer
 Footer.defaultProps = {
-  company: { href: "/", name: "Christian Choi" },
+  company: { href: "/", name: "天主教慈幼會伍少梅中學設計與科技科組" },
   links: [
-    { href: "/", name: "Christian Choi" },
+    { href: "/", name: "天主教慈幼會伍少梅中學設計與科技科組" },
     { href: "/", name: "About Us" },
     { href: "/", name: "Blog" },
     { href: "/", name: "License" },

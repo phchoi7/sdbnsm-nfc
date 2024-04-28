@@ -1,6 +1,6 @@
 {
-  "short_name": "Argon Dashboard 2",
-  "name": "Argon Dashboard 2 MUI",
+  "short_name": "伍少梅中學",
+  "name": "伍少梅中學智能NFC",
   "icons": [
     {
       "src": "favicon.png",
@@ -8,8 +8,11 @@
       "type": "image/png"
     }
   ],
-  "start_url": ".",
+  "start_url": "/index.html",
   "display": "standalone",
-  "theme_color": "#11cdef",
-  "background_color": "#ffffff"
+  "theme_color": "#0CCDEF",
+  "background_color": "#FFFFFF",
+  "orientation": "portrait-primary",
+  "description": "智能NFC系統，由設計與科技科組提供。",
+  "lang": "zh-Hant"
 }

@@ -174,11 +174,18 @@ function DashboardNavbar({ absolute, light, isMini }) {
           <ArgonBox sx={(theme) => navbarRow(theme, { isMini })}>
             <ArgonBox pr={1}>
               <ArgonTypography
-                variant="h3"
+                variant="h5"
                 fontWeight="medium"
                 style={{ color: "white", marginBottom: "12px" }}
               >
-                伍少梅中學 Database
+                © 天主教慈幼會伍少梅中學
+              </ArgonTypography>
+              <ArgonTypography
+                variant="h4"
+                fontWeight="medium"
+                style={{ color: "white", marginBottom: "12px" }}
+              >
+                設計與科技科組數據庫
               </ArgonTypography>
               <ArgonInput
                 placeholder="Type here..."

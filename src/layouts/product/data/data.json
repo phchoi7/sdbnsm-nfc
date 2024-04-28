@@ -1,14 +1,30 @@
 [
     {
         "id": "1",
-        "name": "Product A",
-        "description": "Description for Product A",
-        "image": "/assets/image/apple.jpg"
+        "name": "雀巢咖啡® 歐陸奶滑咖啡",
+        "description": "幼細而充滿奶滑嘅雀巢咖啡®歐陸奶滑咖啡飲料，完全滿足我對奶滑咖啡嘅欲望。",
+        "image": "/assets/image/Nescafe1.png",
+        "audio": "/assets/audio/demo.mp3"
     },
     {
         "id": "2",
-        "name": "Product B",
-        "description": "Description for Product B",
-        "image": "/assets/image/orange.jpg"
+        "name": "雀巢咖啡® 美式醇黑咖啡",
+        "description": "精選優質阿拉比卡咖啡豆製造，無糖無卡路里，呈現醇厚順滑，低焙烤味及低酸澀度的口感。",
+        "image": "/assets/image/Nescafe2.jpg",
+        "audio": "/assets/audio/demo.mp3"
+    },
+    {
+        "id": "3",
+        "name": "麥維他朱古力味忌廉夾心消化餅",
+        "description": "醇滑朱古力忌廉夾心, 餅乾烤焗至金黃色澤，香脆可口。",
+        "image": "/assets/image/product-3.jpg",
+        "audio": "/assets/audio/demo.mp3"
+    },
+    {
+        "id": "4",
+        "name": "麥維他香草味忌廉夾心消化餅",
+        "description": "原味忌廉夾心, 餅乾烤焗至金黃色澤，香脆可口。",
+        "image": "/assets/image/product-4.jpg",
+        "audio": "/assets/audio/demo.mp3"
     }
 ]
