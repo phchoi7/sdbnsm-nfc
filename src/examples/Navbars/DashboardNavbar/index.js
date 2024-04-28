@@ -168,7 +168,7 @@ function DashboardNavbar({ absolute, light, isMini }) {
                 <ArgonTypography
                   variant="h4"
                   fontWeight="medium"
-                  sx={{ color: "white", mr: 2 }}
+                  sx={{ color: "white !important", mr: 2 }}
                 >
                   Hi, Sally 歡迎你回來
                 </ArgonTypography>
@@ -181,7 +181,7 @@ function DashboardNavbar({ absolute, light, isMini }) {
                 <ArgonTypography
                   variant="h4"
                   fontWeight="medium"
-                  sx={{ color: "white", mb: 1 }}
+                  sx={{ color: "white !important", mb: 1 }}
                 >
                   Hi, Sally 歡迎你回來
                 </ArgonTypography>
