@@ -1,19 +1,5 @@
-/**
-=========================================================
-* Argon Dashboard 2 MUI - v3.0.1
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-dashboard-material-ui
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
 import { useState, useEffect, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 
 // react-router components
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
@@ -59,6 +45,14 @@ import brandDark from "assets/images/logo-ct-dark.png";
 import "assets/css/nucleo-icons.css";
 import "assets/css/nucleo-svg.css";
 
+import BottomNavigation from "@mui/material/BottomNavigation";
+import BottomNavigationAction from "@mui/material/BottomNavigationAction";
+
+import SearchPage from "../src/layouts/search/index";
+import LoginIcon from "@mui/icons-material/Login";
+import HomeIcon from "@mui/icons-material/Home";
+import MessageIcon from "@mui/icons-material/Message";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
 export default function App() {
   const [controller, dispatch] = useArgonController();
   const {
@@ -73,6 +67,21 @@ export default function App() {
   const [onMouseEnter, setOnMouseEnter] = useState(false);
   const [rtlCache, setRtlCache] = useState(null);
   const { pathname } = useLocation();
+
+  const navigate = useNavigate();
+  const bottomNavItems = [
+    { label: "Home", icon: <HomeIcon />, route: "/dashboard" },
+    { label: "Profile", icon: <AccountBoxIcon />, route: "/profile" },
+    { label: "Messages", icon: <MessageIcon />, route: "/messages" },
+    { label: "Sign In", icon: <LoginIcon />, route: "/signin" }, // Sign In item
+    // Add more items as needed
+  ];
+
+  const [value, setValue] = useState("dashboard");
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   // Cache for the rtl
   useMemo(() => {
@@ -152,6 +161,8 @@ export default function App() {
       color="dark"
       sx={{ cursor: "pointer" }}
       onClick={handleConfiguratorOpen}
+      py={3}
+      pb={7}
     >
       <Icon fontSize="default" color="inherit">
         settings
@@ -180,6 +191,7 @@ export default function App() {
         {layout === "vr" && <Configurator />}
         <Routes>
           {getRoutes(routes)}
+          <Route exact path="/search" element={<SearchPage />} />
           <Route path="*" element={<Navigate to="/dashboard" />} />
         </Routes>
       </ThemeProvider>
@@ -204,8 +216,31 @@ export default function App() {
       {layout === "vr" && <Configurator />}
       <Routes>
         {getRoutes(routes)}
+        <Route exact path="/search" element={<SearchPage />} />
         <Route path="*" element={<Navigate to="/dashboard" />} />
       </Routes>
+      <BottomNavigation
+        value={value}
+        onChange={handleChange}
+        showLabels
+        sx={{
+          position: "fixed",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          zIndex: (theme) => theme.zIndex.drawer + 1,
+        }}
+      >
+        {bottomNavItems.map((item) => (
+          <BottomNavigationAction
+            key={item.label}
+            label={item.label}
+            value={item.label.toLowerCase()}
+            icon={item.icon}
+            onClick={() => navigate(item.route)}
+          />
+        ))}
+      </BottomNavigation>
     </ThemeProvider>
   );
 }

@@ -1,18 +1,3 @@
-/**
-=========================================================
-* Argon Dashboard 2 MUI - v3.0.1
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-dashboard-material-ui
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
 import { useState, useEffect } from "react";
 
 // react-router components
@@ -33,7 +18,9 @@ import ArgonBox from "components/ArgonBox";
 import ArgonTypography from "components/ArgonTypography";
 import ArgonInput from "components/ArgonInput";
 
-// Argon Dashboard 2 MUI example components
+import { useMediaQuery, useTheme } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+
 import Breadcrumbs from "examples/Breadcrumbs";
 import NotificationItem from "examples/Items/NotificationItem";
 
@@ -58,6 +45,7 @@ import {
 // Images
 import team2 from "assets/images/team-2.jpg";
 import logoSpotify from "assets/images/small-logos/logo-spotify.svg";
+import { Height } from "@mui/icons-material";
 
 function DashboardNavbar({ absolute, light, isMini }) {
   const [navbarType, setNavbarType] = useState();
@@ -66,6 +54,15 @@ function DashboardNavbar({ absolute, light, isMini }) {
     controller;
   const [openMenu, setOpenMenu] = useState(false);
   const route = useLocation().pathname.split("/").slice(1);
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const navigate = useNavigate();
+
+  const handleSearchClick = () => {
+    // Navigate to the search page
+    navigate("/search");
+  };
 
   useEffect(() => {
     // Setting the navbar type
@@ -156,12 +153,6 @@ function DashboardNavbar({ absolute, light, isMini }) {
           mb={{ xs: 1, md: 0 }}
           sx={(theme) => navbarRow(theme, { isMini })}
         >
-          <Breadcrumbs
-            icon="home"
-            title={route[route.length - 1]}
-            route={route}
-            light={transparentNavbar ? light : false}
-          />
           <Icon
             fontSize="medium"
             sx={navbarDesktopMenu}
@@ -172,78 +163,38 @@ function DashboardNavbar({ absolute, light, isMini }) {
         </ArgonBox>
         {isMini ? null : (
           <ArgonBox sx={(theme) => navbarRow(theme, { isMini })}>
-            <ArgonBox pr={1}>
-              <ArgonTypography
-                variant="h5"
-                fontWeight="medium"
-                style={{ color: "white", marginBottom: "12px" }}
-              >
-                © 天主教慈幼會伍少梅中學
-              </ArgonTypography>
-              <ArgonTypography
-                variant="h4"
-                fontWeight="medium"
-                style={{ color: "white", marginBottom: "12px" }}
-              >
-                設計與科技科組數據庫
-              </ArgonTypography>
-              <ArgonInput
-                placeholder="Type here..."
-                startAdornment={
-                  <Icon fontSize="small" style={{ marginRight: "6px" }}>
-                    search
-                  </Icon>
-                }
-              />
-            </ArgonBox>
-            {/* <ArgonBox color={light ? "white" : "inherit"}>
-              <Link to="/authentication/sign-in/basic">
-                <IconButton sx={navbarIconButton} size="small">
-                  <Icon
-                    sx={({ palette: { dark, white } }) => ({
-                      color: light && transparentNavbar ? white.main : dark.main,
-                    })}
-                  >
-                    account_circle
-                  </Icon>
-                  <ArgonTypography
-                    variant="button"
-                    fontWeight="medium"
-                    color={light && transparentNavbar ? "white" : "dark"}
-                  >
-                    Sign in
-                  </ArgonTypography>
+            {isMobile ? (
+              <ArgonBox pr={1} display="flex" alignItems="center">
+                <ArgonTypography
+                  variant="h4"
+                  fontWeight="medium"
+                  sx={{ color: "white", mr: 2 }}
+                >
+                  Hi, Sally 歡迎你回來
+                </ArgonTypography>
+                <IconButton onClick={handleSearchClick}>
+                  <Icon>search</Icon>
                 </IconButton>
-              </Link>
-              <IconButton
-                size="small"
-                color={light && transparentNavbar ? "white" : "dark"}
-                sx={navbarMobileMenu}
-                onClick={handleMiniSidenav}
-              >
-                <Icon>{miniSidenav ? "menu_open" : "menu"}</Icon>
-              </IconButton>
-              <IconButton
-                size="small"
-                color={light && transparentNavbar ? "white" : "dark"}
-                sx={navbarIconButton}
-                onClick={handleConfiguratorOpen}
-              >
-                <Icon>settings</Icon>
-              </IconButton>
-              <IconButton
-                size="small"
-                color={light && transparentNavbar ? "white" : "dark"}
-                sx={navbarIconButton}
-                aria-controls="notification-menu"
-                aria-haspopup="true"
-                variant="contained"
-                onClick={handleOpenMenu}
-              >
-                <Icon>notifications</Icon>
-              </IconButton>
-              {renderMenu()}
-            </ArgonBox> */}
+              </ArgonBox>
+            ) : (
+              <ArgonBox pr={1}>
+                <ArgonTypography
+                  variant="h4"
+                  fontWeight="medium"
+                  sx={{ color: "white", mb: 1 }}
+                >
+                  Hi, Sally 歡迎你回來
+                </ArgonTypography>
+                <ArgonInput
+                  placeholder="Type here..."
+                  startAdornment={
+                    <Icon fontSize="small" sx={{ mr: 1 }}>
+                      search
+                    </Icon>
+                  }
+                />
+              </ArgonBox>
+            )}
           </ArgonBox>
         )}
       </Toolbar>
