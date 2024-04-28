@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-
+// eslint-disable-next-line
 // @mui material components
 import Grid from "@mui/material/Grid";
 import Icon from "@mui/material/Icon";
@@ -78,29 +78,41 @@ function Default() {
         <ArgonTypography variant="h2" fontWeight="medium">
           Discover
         </ArgonTypography>
-        <Grid container spacing={3} mb={3}>
+        <Grid container spacing={3} mb={5}>
           <Grid item xs={12}>
             <ScrollableContainer>
-              {/* Map through your discover items here */}
               {discoverItems.map((item) => (
                 <Card
                   key={item.id}
-                  sx={{ minWidth: "200px", marginRight: "16px" }}
+                  sx={{
+                    minWidth: "200px",
+                    maxWidth: "200px", // Set a maximum width for the card
+                    marginRight: "16px",
+                  }}
                 >
                   <ArgonBox pt={2} px={2}>
-                    {/* Content of the card */}
-                    <ArgonTypography
-                      variant="button"
-                      fontWeight="regular"
-                      color="text"
-                    >
-                      {item.title}
-                    </ArgonTypography>
                     <ArgonBox
                       component="img"
                       src={item.imageUrl}
                       alt={item.title}
+                      sx={{
+                        width: "100%", // Make the image responsive to the width of the card
+                        maxHeight: "150px", // Set a maximum height for the image
+                        objectFit: "cover", // This will cover the area of the box without stretching the image
+                      }}
                     />
+                    <ArgonTypography
+                      variant="button"
+                      fontWeight="regular"
+                      color="text"
+                      sx={{
+                        textAlign: "center", // Center the title text within the card
+                        display: "block", // Ensure the text takes up the full width for centering
+                        my: 1, // Margin top and bottom for spacing
+                      }}
+                    >
+                      {item.title}
+                    </ArgonTypography>
                   </ArgonBox>
                 </Card>
               ))}
@@ -108,39 +120,6 @@ function Default() {
           </Grid>
         </Grid>
         <Grid container spacing={3} mb={3}>
-          <Grid item xs={12} lg={7}>
-            <GradientLineChart
-              title="Sales Overview"
-              description={
-                <ArgonBox display="flex" alignItems="center">
-                  <ArgonBox
-                    fontSize={size.lg}
-                    color="success"
-                    mb={0.3}
-                    mr={0.5}
-                    lineHeight={0}
-                  >
-                    <Icon sx={{ fontWeight: "bold" }}>arrow_upward</Icon>
-                  </ArgonBox>
-                  <ArgonTypography
-                    variant="button"
-                    color="text"
-                    fontWeight="medium"
-                  >
-                    4% more{" "}
-                    <ArgonTypography
-                      variant="button"
-                      color="text"
-                      fontWeight="regular"
-                    >
-                      in 2022
-                    </ArgonTypography>
-                  </ArgonTypography>
-                </ArgonBox>
-              }
-              chart={gradientLineChartData}
-            />
-          </Grid>
           <Grid item xs={12} lg={5}>
             <Slider />
           </Grid>

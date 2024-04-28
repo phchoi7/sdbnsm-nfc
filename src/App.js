@@ -84,14 +84,14 @@ export default function App() {
   };
 
   // Cache for the rtl
-  useMemo(() => {
-    const cacheRtl = createCache({
-      key: "rtl",
-      stylisPlugins: [rtlPlugin],
-    });
+  // useMemo(() => {
+  //   const cacheRtl = createCache({
+  //     key: "rtl",
+  //     stylisPlugins: [rtlPlugin],
+  //   });
 
-    setRtlCache(cacheRtl);
-  }, []);
+  //   setRtlCache(cacheRtl);
+  // }, []);
 
   // Open sidenav when mouse enter on mini sidenav
   const handleOnMouseEnter = () => {
