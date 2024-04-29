@@ -53,6 +53,9 @@ import LoginIcon from "@mui/icons-material/Login";
 import HomeIcon from "@mui/icons-material/Home";
 import MessageIcon from "@mui/icons-material/Message";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
+
+import NfcIcon from "@mui/icons-material/Nfc";
+
 export default function App() {
   const [controller, dispatch] = useArgonController();
   const {
@@ -71,9 +74,9 @@ export default function App() {
   const navigate = useNavigate();
   const bottomNavItems = [
     { label: "Home", icon: <HomeIcon />, route: "/dashboard" },
-    { label: "Profile", icon: <AccountBoxIcon />, route: "/profile" },
+    { label: "NFC", icon: <NfcIcon />, route: "/billing" },
     { label: "Messages", icon: <MessageIcon />, route: "/messages" },
-    { label: "Sign In", icon: <LoginIcon />, route: "/signin" }, // Sign In item
+    { label: "Sign In", icon: <LoginIcon />, route: "/authentication/sign-in" },
     // Add more items as needed
   ];
 
