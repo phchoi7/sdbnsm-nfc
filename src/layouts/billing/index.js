@@ -56,8 +56,13 @@ function Billing() {
           }}
         >
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            {isScanning ? "Scanning..." : "Scan complete or failed."}
+            {isScanning
+              ? "Please hold your device near an NFC tag"
+              : error
+              ? "Scan failed"
+              : "Scan complete"}
           </Typography>
+
           {isScanning ? (
             <CircularProgress />
           ) : error ? (
