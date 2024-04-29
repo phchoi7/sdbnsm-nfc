@@ -4,6 +4,7 @@ export const useNFC = () => {
   const [isScanning, setIsScanning] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [error, setError] = useState("");
+  const [tagContent, setTagContent] = useState(null); // State to hold the read data
   const isNFCSupported = "NDEFReader" in window;
 
   const startNFCScan = async () => {
@@ -18,7 +19,7 @@ export const useNFC = () => {
 
         ndef.onreading = (event) => {
           console.log("NFC tag data read", event); // Debugging log
-          // Handle NFC tag data here
+          handleNDEFMessage(event.message);
         };
 
         ndef.onreadingerror = () => {
@@ -40,12 +41,37 @@ export const useNFC = () => {
     }
   };
 
+  // Function to process NDEFMessage
+  const handleNDEFMessage = (message) => {
+    const records = message.records.map((record) => {
+      return {
+        recordType: record.recordType,
+        mediaType: record.mediaType,
+        data: parseRecordData(record),
+      };
+    });
+    setTagContent(records);
+  };
+
+  // Function to parse NDEFRecord data
+  const parseRecordData = (record) => {
+    if (record.recordType === "text") {
+      const textDecoder = new TextDecoder(record.encoding);
+      return textDecoder.decode(record.data);
+    } else if (record.recordType === "url") {
+      return new TextDecoder().decode(record.data);
+    } else {
+      return record.data; // Return raw data for other types or handle accordingly
+    }
+  };
+
   return {
     isScanning,
     startNFCScan,
     modalOpen,
     setModalOpen,
     error,
+    tagContent, // Expose the NFC tag content
     isNFCSupported,
   };
 };

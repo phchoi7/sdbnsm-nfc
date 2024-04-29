@@ -1,14 +1,9 @@
 import React from "react";
-import Grid from "@mui/material/Grid";
-import Modal from "@mui/material/Modal";
-import Typography from "@mui/material/Typography";
-import CircularProgress from "@mui/material/CircularProgress";
+import { CircularProgress, Grid, Modal, Typography } from "@mui/material";
 import ArgonBox from "components/ArgonBox";
-import ArgonButton from "components/ArgonButton";
 import BaseLayout from "layouts/billing/components/BaseLayout";
 import { useNFC } from "./useNFC";
-import ArgonTypography from "components/ArgonTypography";
-import NfcIcon from "@mui/icons-material/Nfc";
+import ArgonButton from "components/ArgonButton";
 
 function Billing() {
   const {
@@ -17,51 +12,29 @@ function Billing() {
     modalOpen,
     setModalOpen,
     error,
+    tagContent,
     isNFCSupported,
   } = useNFC();
 
   return (
     <BaseLayout stickyNavbar>
       <ArgonBox mt={24}>
-        <ArgonBox mb={3}>
-          <Grid
-            container
-            spacing={3}
-            justifyContent="center"
-            alignItems="center"
+        <Grid container spacing={3} justifyContent="center">
+          <ArgonButton
+            color="info"
+            variant="outlined"
+            onClick={startNFCScan}
+            disabled={!isNFCSupported}
           >
-            <Grid item xs={12}>
-              <NfcIcon
-                fontSize="large"
-                sx={{ fontSize: 100, display: "block", margin: "auto" }}
-              />
-              {isNFCSupported ? (
-                <ArgonButton
-                  color="info"
-                  variant="outlined"
-                  onClick={startNFCScan}
-                  fullWidth
-                  style={{ marginTop: "10px" }}
-                >
-                  Scan NFC Tag
-                </ArgonButton>
-              ) : (
-                <ArgonTypography
-                  variant="h2"
-                  fontWeight="medium"
-                  style={{
-                    color: "red",
-                    marginTop: "10px",
-                    textAlign: "center",
-                  }}
-                >
-                  此設備不支援 NFC。 請使用與 Google Chrome 相容的 Android
-                  裝置。
-                </ArgonTypography>
-              )}
-            </Grid>
-          </Grid>
-        </ArgonBox>
+            Scan NFC Tag
+          </ArgonButton>
+          {!isNFCSupported && (
+            <Typography variant="body1" color="error">
+              NFC is not supported on this browser. Please use a compatible
+              Android device with Google Chrome.
+            </Typography>
+          )}
+        </Grid>
       </ArgonBox>
       <Modal
         open={modalOpen}
@@ -79,6 +52,7 @@ function Billing() {
             border: "2px solid #000",
             boxShadow: 24,
             p: 4,
+            minWidth: "300px", // Ensure the modal is not too small
           }}
         >
           <Typography id="modal-modal-title" variant="h6" component="h2">
@@ -86,10 +60,22 @@ function Billing() {
           </Typography>
           {isScanning ? (
             <CircularProgress />
-          ) : (
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              {error || "Scan complete."}
+          ) : error ? (
+            <Typography variant="body1" color="error">
+              {error}
             </Typography>
+          ) : (
+            tagContent && (
+              <div>
+                {tagContent.map((record, index) => (
+                  <Typography key={index} variant="body1">
+                    {record.recordType === "url"
+                      ? `URL: ${record.data}`
+                      : `Data: ${record.data}`}
+                  </Typography>
+                ))}
+              </div>
+            )
           )}
         </ArgonBox>
       </Modal>
