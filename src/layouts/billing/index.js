@@ -57,7 +57,7 @@ function Billing() {
         >
           <Typography id="modal-modal-title" variant="h6" component="h2">
             {isScanning
-              ? "Please hold your device near an NFC tag"
+              ? "請將您的裝置靠近 NFC 標籤"
               : error
               ? "Scan failed"
               : "Scan complete"}

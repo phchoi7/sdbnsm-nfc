@@ -41,8 +41,8 @@ export const useNFC = () => {
     }
   };
 
-  // Function to process NDEFMessage
   const handleNDEFMessage = (message) => {
+    console.log("Handling NDEF Message", message); // Add more detailed log
     const records = message.records.map((record) => {
       return {
         recordType: record.recordType,
@@ -51,17 +51,19 @@ export const useNFC = () => {
       };
     });
     setTagContent(records);
+    console.log("Parsed Records: ", records); // Log the parsed records
   };
 
-  // Function to parse NDEFRecord data
   const parseRecordData = (record) => {
-    if (record.recordType === "text") {
-      const textDecoder = new TextDecoder(record.encoding);
-      return textDecoder.decode(record.data);
-    } else if (record.recordType === "url") {
-      return new TextDecoder().decode(record.data);
-    } else {
-      return record.data; // Return raw data for other types or handle accordingly
+    console.log("Parsing Record Data", record); // Log record details
+    switch (record.recordType) {
+      case "text":
+        const textDecoder = new TextDecoder(record.encoding || "utf-8");
+        return textDecoder.decode(record.data);
+      case "url":
+        return new TextDecoder().decode(record.data);
+      default:
+        return "Unsupported record type"; // Handle other types or unsupported types
     }
   };
 
