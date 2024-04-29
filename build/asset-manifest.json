@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.4c8bbba8.css",
-    "main.js": "/static/js/main.53c1d43d.js",
+    "main.js": "/static/js/main.553af0f0.js",
     "static/media/vr-bg.jpg": "/static/media/vr-bg.09e3bc1cff3711b57a2c.jpg",
     "static/media/img-2.jpg": "/static/media/img-2.d97bd8ee71e6afc19404.jpg",
     "static/media/img-1.jpg": "/static/media/img-1.18c5ecb11935c7e58781.jpg",
@@ -17,8 +17,6 @@
     "static/media/home-decor-2.jpg": "/static/media/home-decor-2.b2eadbdedecfc0c7e6bd.jpg",
     "static/media/bruce-mars.jpg": "/static/media/bruce-mars.36a49d2f110b271434be.jpg",
     "static/media/home-decor-1.jpg": "/static/media/home-decor-1.8ea567752df013c14430.jpg",
-    "static/media/visa.png": "/static/media/visa.71c0d5e9e2aaee42e4c3.png",
-    "static/media/mastercard.png": "/static/media/mastercard.27fca3e7637a9458fb64.png",
     "static/media/icon-documentation.svg": "/static/media/icon-documentation.4b8b177e5b6c3daf83758a0b392550cf.svg",
     "static/media/team-3.jpg": "/static/media/team-3.b75146da5bfdf9d8ae61.jpg",
     "static/media/logo-ct-dark.png": "/static/media/logo-ct-dark.7d75dd1f5197a21e1849.png",
@@ -35,10 +33,10 @@
     "static/media/logo-webdev.svg": "/static/media/logo-webdev.25d88bfc768c8439fdb33efc0d8e6015.svg",
     "index.html": "/index.html",
     "main.4c8bbba8.css.map": "/static/css/main.4c8bbba8.css.map",
-    "main.53c1d43d.js.map": "/static/js/main.53c1d43d.js.map"
+    "main.553af0f0.js.map": "/static/js/main.553af0f0.js.map"
   },
   "entrypoints": [
     "static/css/main.4c8bbba8.css",
-    "static/js/main.53c1d43d.js"
+    "static/js/main.553af0f0.js"
   ]
 }
